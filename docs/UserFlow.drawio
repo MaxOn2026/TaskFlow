@@ -1,0 +1,52 @@
+<mxfile host="Electron">
+  <diagram name="Страница-1" id="U-gKcgDUuNWjP-T1tFBI">
+    <mxGraphModel dx="786" dy="469" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-4" edge="1" parent="1" source="umg5sQ0XvFTiBZjsDM0E-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="umg5sQ0XvFTiBZjsDM0E-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Регистрация и JWT-токен" vertex="1">
+          <mxGeometry height="30" width="60" x="130" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Создание проекта" vertex="1">
+          <mxGeometry height="30" width="60" x="300" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-5" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Доска с колонками" vertex="1">
+          <mxGeometry height="150" width="140" x="490" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-6" parent="umg5sQ0XvFTiBZjsDM0E-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Сделать" vertex="1">
+          <mxGeometry height="30" width="140" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-7" parent="umg5sQ0XvFTiBZjsDM0E-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="В работе" vertex="1">
+          <mxGeometry height="30" width="140" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-8" parent="umg5sQ0XvFTiBZjsDM0E-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Готово" vertex="1">
+          <mxGeometry height="30" width="140" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-9" parent="umg5sQ0XvFTiBZjsDM0E-5" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Отложено" vertex="1">
+          <mxGeometry height="30" width="140" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-10" edge="1" parent="1" source="umg5sQ0XvFTiBZjsDM0E-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.003;entryY=0.126;entryDx=0;entryDy=0;entryPerimeter=0;" target="umg5sQ0XvFTiBZjsDM0E-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-11" parent="1" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Доска с колонками" vertex="1">
+          <mxGeometry height="120" width="140" x="750" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-12" parent="umg5sQ0XvFTiBZjsDM0E-11" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 1" vertex="1">
+          <mxGeometry height="30" width="140" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-13" parent="umg5sQ0XvFTiBZjsDM0E-11" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 2" vertex="1">
+          <mxGeometry height="30" width="140" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-14" parent="umg5sQ0XvFTiBZjsDM0E-11" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" value="Item 3" vertex="1">
+          <mxGeometry height="30" width="140" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="umg5sQ0XvFTiBZjsDM0E-15" edge="1" parent="1" source="umg5sQ0XvFTiBZjsDM0E-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.022;entryY=0.159;entryDx=0;entryDy=0;entryPerimeter=0;" target="umg5sQ0XvFTiBZjsDM0E-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
