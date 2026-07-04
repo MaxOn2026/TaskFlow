@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель управления - TaskFlow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: #f4f5f7;
+            color: #172b4d;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: #0052cc;
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .header-logo span {
+            background: white;
+            color: #0052cc;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .header-nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 32px auto;
+            padding: 0 24px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* Page Header */
+        .page-header {
+            margin-bottom: 32px;
+        }
+
+        .page-title {
+            font-size: 28px;
+            font-weight: 600;
+            color: #172b4d;
+            margin-bottom: 8px;
+        }
+
+        .page-description {
+            color: #5e6c84;
+            font-size: 16px;
+        }
+
+        /* Welcome Card */
+        .welcome-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .welcome-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .welcome-subtitle {
+            color: #5e6c84;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .action-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .action-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .action-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .action-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #172b4d;
+            margin-bottom: 8px;
+        }
+
+        .action-desc {
+            color: #5e6c84;
+            font-size: 14px;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 24px;
+        }
+
+        .stat-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #5e6c84;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #0052cc;
+        }
+
+        .stat-change {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .stat-change.positive {
+            color: #27ae60;
+        }
+
+        .stat-change.negative {
+            color: #e74c3c;
+        }
+
+        /* Recent Tasks Section */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #172b4d;
+        }
+
+        .view-all {
+            color: #0052cc;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .view-all:hover {
+            text-decoration: underline;
+        }
+
+        /* Recent Tasks List */
+        .recent-tasks {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid #ebecf0;
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s;
+        }
+
+        .task-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .task-item:last-child {
+            border-bottom: none;
+        }
+
+        .task-item-icon {
+            font-size: 24px;
+            margin-right: 16px;
+        }
+
+        .task-item-info {
+            flex: 1;
+        }
+
+        .task-item-title {
+            font-weight: 500;
+            color: #172b4d;
+            margin-bottom: 4px;
+        }
+
+        .task-item-meta {
+            font-size: 12px;
+            color: #5e6c84;
+        }
+
+        .task-item-status {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #5e6c84;
+        }
+
+        .empty-state-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #5e6c84;
+            font-size: 12px;
+            border-top: 1px solid #ebecf0;
+            background: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <a href="{% url 'tasks:task_list' %}" class="header-logo">
+            <span>TF</span>
+            TaskFlow
+        </a>
+        <nav class="header-nav">
+            <a href="{% url 'tasks:task_list' %}">Мои задачи</a>
+            <a href="#">Проекты</a>
+            <a href="#">Доска</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Добро пожаловать, {{ user.get_full_name|default:user.username }}!</h1>
+            <p class="page-description">Ваша панель управления задачами и проектами</p>
+        </div>
+
+        <!-- Welcome Card -->
+        <div class="welcome-card">
+            <div class="welcome-icon">🚀</div>
+            <h2>Готовы к работе?</h2>
+            <p class="welcome-subtitle">У вас есть {{ pending_tasks|length }} задач в статусе "В работе". Начните день с организации своих задач.</p>
+            <a href="{% url 'tasks:create_task' %}" class="btn-create">
+                <span>+</span> Создать новую задачу
+            </a>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <a href="{% url 'tasks:create_task' %}" class="action-card">
+                <div class="action-icon">📝</div>
+                <div class="action-title">Создать задачу</div>
+                <div class="action-desc">Начните новую задачу с описанием и статусом</div>
+            </a>
+            <a href="{% url 'tasks:task_list' %}" class="action-card">
+                <div class="action-icon">📋</div>
+                <div class="action-title">Мои задачи</div>
+                <div class="action-desc">Просмотрите все свои задачи и их статусы</div>
+            </a>
+            <a href="#" class="action-card">
+                <div class="action-icon">📁</div>
+                <div class="action-title">Проекты</div>
+                <div class="action-desc">Управление проектами и командами</div>
+            </a>
+            <a href="#" class="action-card">
+                <div class="action-icon">📅</div>
+                <div class="action-title">Доска</div>
+                <div class="action-desc">Канбан-доска для визуального управления</div>
+            </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-title">Всего задач</div>
+                <div class="stat-value">{{ total_tasks }}</div>
+                <div class="stat-change positive">↑ +{{ new_tasks_today }} сегодня</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">В работе</div>
+                <div class="stat-value">{{ in_progress_tasks }}</div>
+                <div class="stat-change">Активные задачи</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Завершено</div>
+                <div class="stat-value">{{ completed_tasks }}</div>
+                <div class="stat-change positive">↑ +{{ completed_today }} сегодня</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-title">Просрочено</div>
+                <div class="stat-value">{{ overdue_tasks }}</div>
+                <div class="stat-change negative">⚠️ Требуют внимания</div>
+            </div>
+        </div>
+
+        <!-- Recent Tasks -->
+        <div class="section-header">
+            <h2 class="section-title">Последние задачи</h2>
+            <a href="{% url 'tasks:task_list' %}" class="view-all">Показать все</a>
+        </div>
+
+        <div class="recent-tasks">
+            {% if recent_tasks %}
+                {% for task in recent_tasks %}
+                    <a href="#" class="task-item">
+                        <div class="task-item-icon">📌</div>
+                        <div class="task-item-info">
+                            <div class="task-item-title">{{ task.title }}</div>
+                            <div class="task-item-meta">
+                                {% if task.owner %}
+                                    {{ task.owner.get_full_name|default:task.owner.username }} • 
+                                {% endif %}
+                                Создано {{ task.created_at|date:"d M Y в H:i" }}
+                            </div>
+                        </div>
+                        <div class="task-item-status" style="background-color: {% if task.status %}{{ task.status.color|default:'#667eea' }}{% else %}#dfe1e6; color: #5e6c84{% endif %}">
+                            {{ task.status.title|default:"Без статуса" }}
+                        </div>
+                    </a>
+                {% endfor %}
+            {% else %}
+                <div class="empty-state" style="padding: 32px;">
+                    <div class="empty-state-icon">📋</div>
+                    <p>У вас пока нет задач</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        TaskFlow © 2024 — Система управления задачами
+    </div>
+</body>
+</html>

@@ -18,14 +18,17 @@ class Status(models.Model):
 
 class Task(models.Model):
     title = models.CharField(max_length=256)
-    description = models.TextField(blank=True)
+    description = models.TextField(blank=True, null=True)
     status = models.ForeignKey(
         Status,
+        null=True,
+        default='Без статуса',
         on_delete=models.SET_NULL,
         related_name='status',
         verbose_name='Статус'
     )
     created_at = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True, default=created_at)
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
