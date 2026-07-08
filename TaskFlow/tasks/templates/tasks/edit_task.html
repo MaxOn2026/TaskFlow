@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактировать задачу - TaskFlow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: #f4f5f7;
+            color: #172b4d;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header (как в task_list) */
+        .header {
+            background: #0052cc;
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .header-logo span {
+            background: white;
+            color: #0052cc;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .header-nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 14px;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .header-nav a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 960px;
+            margin: 32px auto;
+            padding: 0 24px;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #5e6c84;
+        }
+
+        .breadcrumbs a {
+            color: #0052cc;
+            text-decoration: none;
+        }
+
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumbs span {
+            color: #5e6c84;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #172b4d;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 32px;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #172b4d;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group label .required {
+            color: #eb5a46;
+            margin-left: 2px;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #dfE4e6;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+            background: #ffffff;
+            color: #172b4d;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #0052cc;
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.15);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            line-height: 1.5;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235e6c84' d='M6 8.825c-.2 0-.375-.075-.525-.225l-3.9-3.9c-.3-.3-.3-.75 0-1.05s.75-.3 1.05 0L6 7.125l3.375-3.375c.3-.3.75-.3 1.05 0s.3.75 0 1.05l-3.9 3.9c-.15.15-.3.225-.525.225z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+        }
+
+        /* Task Info Section */
+        .task-info {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border-left: 4px solid #0052cc;
+        }
+
+        .task-info-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: #5e6c84;
+        }
+
+        .task-info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .task-info-label {
+            font-weight: 600;
+            color: #5e6c84;
+        }
+
+        .task-info-value {
+            font-weight: 500;
+            color: #172b4d;
+        }
+
+        .task-info-value.empty {
+            color: #dfe1e6;
+            font-style: italic;
+        }
+
+        .task-info-icon {
+            font-size: 18px;
+        }
+
+        /* Buttons */
+        .form-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid #ebecf0;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: #0052cc;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0065ff;
+        }
+
+        .btn-secondary {
+            background: #ebecf0;
+            color: #172b4d;
+        }
+
+        .btn-secondary:hover {
+            background: #dfe1e6;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #5e6c84;
+            font-size: 12px;
+            border-top: 1px solid #ebecf0;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <a href="{% url 'tasks:task_list' %}" class="header-logo">
+            <span>TF</span>
+            TaskFlow
+        </a>
+        <nav class="header-nav">
+            <a href="{% url 'tasks:task_list' %}">Мои задачи</a>
+            <a href="#">Проекты</a>
+            <a href="#">Доска</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="{% url 'tasks:task_list' %}">Задачи</a>
+            <span>/</span>
+            <span>Редактировать задачу</span>
+        </div>
+
+        <!-- Page Title -->
+        <h1 class="page-title">Редактировать задачу</h1>
+
+        <!-- Task Info -->
+        <div class="task-info">
+            <div class="task-info-row">
+                <span class="task-info-icon">📋</span>
+                <span class="task-info-label">ID задачи:</span>
+                <span class="task-info-value">{{ task.id }}</span>
+            </div>
+            <div class="task-info-row">
+                <span class="task-info-icon">📅</span>
+                <span class="task-info-label">Создано:</span>
+                <span class="task-info-value">{{ task.created_at|date:"d.m.Y в H:i" }}</span>
+            </div>
+            {% if task.last_updated %}
+            <div class="task-info-row">
+                <span class="task-info-icon">🔄</span>
+                <span class="task-info-label">Обновлено:</span>
+                <span class="task-info-value">{{ task.last_updated|date:"d.m.Y в H:i" }}</span>
+            </div>
+            {% endif %}
+            {% if task.deadline %}
+            <div class="task-info-row">
+                <span class="task-info-icon">⏰</span>
+                <span class="task-info-label">Срок выполнения:</span>
+                <span class="task-info-value">{{ task.deadline|date:"d.m.Y в H:i" }}</span>
+            </div>
+            {% endif %}
+            {% if task.owner %}
+            <div class="task-info-row">
+                <span class="task-info-icon">👤</span>
+                <span class="task-info-label">Владелец:</span>
+                <span class="task-info-value">{{ task.owner.get_full_name|default:task.owner.username }}</span>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}">
+                        {{ form.title.label }} <span class="required">*</span>
+                    </label>
+                    {{ form.title }}
+                    {% if form.title.errors %}
+                        <div style="color: #eb5a46; font-size: 12px; margin-top: 4px;">
+                            {{ form.title.errors.0 }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.description.id_for_label }}">Описание</label>
+                    {{ form.description }}
+                    <div style="color: #5e6c84; font-size: 12px; margin-top: 4px;">
+                        Подробно опишите задачу, чтобы другие участники могли понять контекст
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.status.id_for_label }}">Статус</label>
+                    {{ form.status }}
+                </div>
+
+                <!-- Actions -->
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        Сохранить изменения
+                    </button>
+                    <a href="{% url 'tasks:task_list' %}" class="btn btn-secondary">
+                        Отмена
+                    </a>
+                    <a href="{% url 'tasks:delete_task' task.id %}" class="btn btn-danger" onclick="return confirm('Вы уверены, что хотите удалить эту задачу?');">
+                        Удалить
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        TaskFlow © 2024 — Система управления задачами
+    </div>
+</body>
+</html>

@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="9f85c86e-e31a-42e0-92cc-5064246579c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TaskFlow/dashboard/templates/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskFlow/dashboard/templates/dashboard/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskFlow/dashboard/templates/dashboard/dashboard.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskFlow/tasks/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskFlow/tasks/migrations/0001_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskFlow/tasks/templates/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskFlow/tasks/templates/tasks/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskFlow/tasks/templates/tasks/create_task.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TaskFlow/tasks/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskFlow/accounts/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskFlow/accounts/templates/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskFlow/accounts/templates/accounts/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskFlow/accounts/templates/accounts/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskFlow/accounts/templates/accounts/register.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskFlow/accounts/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TaskFlow/tasks/templates/tasks/edit_task.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/TaskFlow.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TaskFlow.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaskFlow/TaskFlow/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/TaskFlow/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaskFlow/TaskFlow/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/TaskFlow/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TaskFlow/tasks/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/tasks/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskFlow/dashboard/templates/dashboard/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/dashboard/templates/dashboard/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskFlow/dashboard/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/dashboard/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskFlow/dashboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/dashboard/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskFlow/tasks/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/tasks/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaskFlow/tasks/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/tasks/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskFlow/tasks/templates/tasks/task_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/tasks/templates/tasks/task_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TaskFlow/tasks/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/tasks/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TaskFlow/tasks/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/TaskFlow/tasks/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/.$UserFlow.drawio.bkp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/UserFlow.drawio" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,18 +87,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/maxon/Программирование/TaskFlow&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.intellij.sdk.settings.AppSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "dev",
+    "last_opened_file_path": "/home/maxon/Программирование/TaskFlow",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.toDoOptions",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -114,7 +126,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
       <option name="PARAMETERS" value="" />
@@ -126,6 +138,13 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-0978a7220b69-9867c7d4c0a4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-253.28294.336" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="9f85c86e-e31a-42e0-92cc-5064246579c2" name="Changes" comment="" />
@@ -133,8 +152,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1782832130855</updated>
+      <workItem from="1783265103129" duration="555000" />
+      <workItem from="1783359224185" duration="51000" />
+      <workItem from="1783359304257" duration="398000" />
+      <workItem from="1783359723771" duration="221000" />
+      <workItem from="1783359962419" duration="419000" />
+      <workItem from="1783392363208" duration="190000" />
+      <workItem from="1783392609487" duration="598000" />
+      <workItem from="1783393235886" duration="92000" />
+      <workItem from="1783393355339" duration="9846000" />
+      <workItem from="1783405344762" duration="5529000" />
+      <workItem from="1783477566001" duration="2142000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
