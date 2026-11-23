@@ -1,0 +1,7 @@
+asgiref==3.11.1
+Django==6.0.6
+greenlet==3.5.3
+psycopg2-binary==2.9.12
+SQLAlchemy==2.0.51
+sqlparse==0.5.5
+typing_extensions==4.15.0

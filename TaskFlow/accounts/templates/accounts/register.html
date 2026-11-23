@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация - TaskFlow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background-color: #f4f5f7;
+            color: #172b4d;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background: #0052cc;
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-logo {
+            font-size: 20px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .header-logo span {
+            background: white;
+            color: #0052cc;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 32px auto;
+            padding: 0 24px;
+            width: 100%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Register Card */
+        .register-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            padding: 48px;
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .register-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .register-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #172b4d;
+            margin-bottom: 8px;
+        }
+
+        .register-subtitle {
+            color: #5e6c84;
+            font-size: 16px;
+        }
+
+        /* Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #172b4d;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 14px;
+            border: 1px solid #dfe1e6;
+            border-radius: 4px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #0052cc;
+            box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.15);
+        }
+
+        .form-input::placeholder {
+            color: #cfd0d5;
+        }
+
+        .form-error {
+            color: #bf2626;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .form-error.visible {
+            display: block;
+        }
+
+        .form-error span {
+            color: #bf2626;
+        }
+
+        .btn-register {
+            width: 100%;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            color: white;
+            background: #0052cc;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-register:hover {
+            background: #0043a3;
+        }
+
+        .btn-register:active {
+            transform: translateY(1px);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 24px;
+            color: #5e6c84;
+            font-size: 12px;
+            border-top: 1px solid #ebecf0;
+            background: white;
+        }
+
+        .footer-links {
+            margin-top: 8px;
+        }
+
+        .footer-links a {
+            color: #0052cc;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .register-card {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <a href="{% url 'tasks:task_list' %}" class="header-logo">
+            <span>TF</span>
+            TaskFlow
+        </a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Register Card -->
+        <div class="register-card">
+            <div class="register-header">
+                <div class="register-icon">📝</div>
+                <h1 class="register-title">Регистрация</h1>
+                <p class="register-subtitle">Создайте новый аккаунт для работы с задачами</p>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}" class="form-label">Имя пользователя</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                    <div class="form-error visible">
+                        <span>•</span> {{ form.username.errors|join:", " }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}" class="form-label">Email</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                    <div class="form-error visible">
+                        <span>•</span> {{ form.email.errors|join:", " }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}" class="form-label">Пароль</label>
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                    <div class="form-error visible">
+                        <span>•</span> {{ form.password1.errors|join:", " }}
+                    </div>
+                    {% endif %}
+                    <div style="font-size: 12px; color: #5e6c84; margin-top: 4px;">
+                        Минимум 8 символов
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}" class="form-label">Подтверждение пароля</label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                    <div class="form-error visible">
+                        <span>•</span> {{ form.password2.errors|join:", " }}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn-register">Зарегистрироваться</button>
+
+                <div style="margin-top: 24px; text-align: center; color: #5e6c84; font-size: 14px;">
+                    Уже есть аккаунт? <a href="{% url 'accounts:login' %}" style="color: #0052cc; text-decoration: none;">Вход</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>TaskFlow © 2024 — Система управления задачами</div>
+        <div class="footer-links">
+            <a href="#">Помощь</a>
+            <a href="#">Контакты</a>
+        </div>
+    </div>
+</body>
+</html>
